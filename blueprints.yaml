@@ -1,0 +1,26 @@
+name: LinkTo
+version: 1.0.1
+description: The **LinkTo** plugin is an extention to twig. This extention contains a filter and a function used to convert a given set of variables and options to some html link tags.
+icon: code
+author:
+  name: Patrick P. Henley
+  email: patrick.p.henley@gmail.com
+
+homepage: https://github.com/ab18556/grav-plugin-linkto
+keywords: filter, helper, link, linkTo, twig, markup, plugin
+bugs: https://github.com/ab18556/grav-plugin-linkto/issues
+license: MIT
+
+form:
+  validation: strict
+  fields:
+    enabled:
+      type: toggle
+      label: Plugin status
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
