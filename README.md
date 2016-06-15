@@ -42,9 +42,8 @@ The **LinkTo** plugin for Grav is an extention to twig. This extention contains 
 
 ### Creating a link from array
 ```twig
-{{ {'page': pages.find('/home'), 'class': 'funny-class'}|link_to }
+{{ {'page': pages.find('/home'), 'class': 'funny-class'}|link_to }}
 {# or #}
 {{ link_to({'page': pages.find('/home'), 'class': 'funny-class'}) }}
-
 {# <a href="{{page.link}}" class="funny-class">{{page.menu}}</a> #}
 ```
