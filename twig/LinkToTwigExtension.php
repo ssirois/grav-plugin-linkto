@@ -52,6 +52,8 @@ class LinkToTwigExtension extends \Twig_Extension
       $options = array_merge($page_opts, $options);
     }
 
+    $options['content'] = isset($options['content']) ? $options['content'] : '';
+    
     $blacklist = array('page', 'content');
 
 
