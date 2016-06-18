@@ -1,6 +1,18 @@
 <?php
+
 namespace Grav\Plugin;
 
+/**
+* LinkToTwigExtension adds a link_to filter and helper function to Twig.
+*
+* That class adds a filter and a function that helps to transform different
+* type of data into links.
+*
+* Example usage:
+* {{ pages.find('/home')|link_to }}
+*
+* @author   Patrick P. Henley <patrick.p.henley@gmail.com>
+*/
 class LinkToTwigExtension extends \Twig_Extension
 {
     /**
@@ -13,6 +25,11 @@ class LinkToTwigExtension extends \Twig_Extension
         return 'LinkToTwigExtension';
     }
 
+    /**
+     * Returns a filter
+     *
+     * @return \Twig_SimpleFilter
+     */
     public function getFilters()
     {
         return [
@@ -20,6 +37,11 @@ class LinkToTwigExtension extends \Twig_Extension
         ];
     }
 
+    /**
+     * Returns a filter
+     *
+     * @return \Twig_SimpleFunction
+     */
     public function getFunctions()
     {
         return [
@@ -27,6 +49,14 @@ class LinkToTwigExtension extends \Twig_Extension
         ];
     }
 
+    /**
+     * Takes a set of data and returns a formatted HTML tag link.
+     *
+     * @param string|object|array $raw The element that we want to link to.
+     * @param array $options An optional set of options to configure the link.
+     *
+     * @return \Twig_SimpleFunction
+     */
     public function linkTo($raw, $options = array())
     {
         switch (gettype($raw)) {
@@ -63,15 +93,30 @@ class LinkToTwigExtension extends \Twig_Extension
             }
         }
 
-        return $this->formatLink($options);
+        return $this->formatLink($options['attributes'], $options['content']);
     }
 
-    private function formatLink($options)
+    /**
+     * Build an HTML link from HTML attributes and the content of the link.
+     *
+     * @param string $attributes A string that contains all the html attributes of the link.
+     * @param string $content A string that contains the content of the link.
+     *
+     * @return string.
+     */
+    private function formatLink($attributes = '', $content = '')
     {
 
-        return '<a' . $this->formatAttributes($options['attributes']) . '>' . $options['content'] . '</a>';
+        return '<a' . $this->formatAttributes($attributes) . '>' . $content . '</a>';
     }
 
+    /**
+     * Format the HTML attribute string of the link using an array of attributes.
+     *
+     * @param array $attributes An array that contains all the html attributes of the link.
+     *
+     * @return string
+     */
     private function formatAttributes($attributes)
     {
         $attribute_string = '';
