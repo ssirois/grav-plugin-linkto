@@ -56,7 +56,7 @@ class LinkToTwigExtension extends \Twig_Extension
      *
      * @return \LinkHelper
      */
-    public function linkTo($rawElement, $config)
+    public function linkTo($rawElement, $config = [])
     {
         return new LinkHelper($rawElement, $config);
     }
