@@ -1,24 +1,14 @@
 <?php
 
+use Grav\Plugin\LinkToTwigExtension\LinkHelper;
+use \Codeception\Util\Stub;
+use Grav\Common\Page\Page;
 
 class LinkHelperTest extends \Codeception\Test\Unit
 {
-    /**
-     * @var \UnitTester
-     */
-    protected $tester;
 
-    protected function _before()
+    public function testLinkCreationFromPageObject()
     {
-    }
-
-    protected function _after()
-    {
-    }
-
-    // tests
-    public function testMe()
-    {
-
+        // Tests will be added here as soon as I find how to mock page objects.
     }
 }
