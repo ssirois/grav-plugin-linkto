@@ -89,6 +89,17 @@ class LinkHelper
      */
     private function getAttributes()
     {
+        $attributes = $this->getAttributesOutOfConfigs();
+
+        return new AttributeListHelper($attributes);
+    }
+
+    /**
+     * Returns an array of "real" attributes out of all configs
+     *
+     * @return array
+     */
+    private function getAttributesOutOfConfigs() {
         $falseAttributes = array('page', 'content');
         $attributes = array();
         foreach(array_keys($this->config) as $key) {
@@ -97,7 +108,7 @@ class LinkHelper
           }
         }
 
-        return new AttributeListHelper($attributes);
+        return $attributes;
     }
 
     /**
