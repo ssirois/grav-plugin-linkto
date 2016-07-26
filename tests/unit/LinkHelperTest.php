@@ -2,13 +2,13 @@
 
 use Grav\Plugin\LinkToTwigExtension\LinkHelper;
 use \Codeception\Util\Stub;
-use Grav\Common\Page\Page;
 
 class LinkHelperTest extends \Codeception\Test\Unit
 {
 
     public function testLinkCreationFromPageObject()
     {
-        // Tests will be added here as soon as I find how to mock page objects.
+      $page = Stub::make('Grav\Common\Page\Page', ['link' => 'http://www.example.com/',  'menu' => 'Example.com']);
+      $this->assertEquals('<a href="http://www.example.com/">Example.com</a>', new LinkHelper($page));
     }
 }

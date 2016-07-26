@@ -89,16 +89,15 @@ class LinkHelper
      */
     private function getAttributes()
     {
-        return new AttributeListHelper(
-            array_filter(
-                $this->config,
-                function ($key) {
-                     return !in_array($key, array('page', 'content'));
-                },
-                ARRAY_FILTER_USE_KEY
-            )
-        );
+        $falseAttributes = array('page', 'content');
+        $attributes = array();
+        foreach(array_keys($this->config) as $key) {
+          if (!in_array($key, $falseAttributes)) {
+            $attributes[$key] = $this->config[$key];
+          }
+        }
 
+        return new AttributeListHelper($attributes);
     }
 
     /**
